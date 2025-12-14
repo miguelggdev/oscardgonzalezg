@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+.pnpm-store
+
+# build output
+dist
+dist-ssr
+
+# env
+.env
+.env.*
+
+# logs
+npm-debug.log*
+pnpm-debug.log*
+
+# system
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode
+.idea
