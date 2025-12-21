@@ -5,10 +5,11 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Eye, Download } from "lucide-react";
+import { Download } from "lucide-react";
 import { ScrollLink } from "./ScrollLink";
 import { OptimizedImage } from "./OptimizedImage";
 import { assetUrl } from "@/lib/asset";
+import { ModelGallery } from "./ModelGallery"; // Importamos el nuevo componente
 
 interface Model {
   name: string;
@@ -16,6 +17,7 @@ interface Model {
   description: string;
   label?: string;
   pdf?: string;
+  galleryImages?: string[]; // Añadimos la lista de imágenes para la galería
 }
 
 const featuredModels: Model[] = [
@@ -25,6 +27,14 @@ const featuredModels: Model[] = [
     description: "El SUV familiar por excelencia. Espacio, confort y tecnología para todos.",
     label: "Últimas Unidades",
     pdf: "/documents/FICHA-ZS.pdf",
+    galleryImages: [
+      "/images/mgzs.jpg",
+      "/images/mgzsindoor.jpg",
+      "/images/mgzsroad.jpg",
+      "/images/mgsz1.jpg",
+      "/images/mgzs2.jpg",
+      "/images/mgzs3.jpg",
+    ],
   },
   {
     name: "Marvel R",
@@ -32,12 +42,13 @@ const featuredModels: Model[] = [
     description: "Tecnología y elegancia se unen en este SUV 100% eléctrico.",
     label: "Oferta Exclusiva",
     pdf: "/documents/FICHA-MARVEL.pdf",
+    // Dejamos galleryImages vacío por ahora, si el usuario pide más galerías, las añadiremos.
   },
   {
     name: "MG4 Cross",
     image: "/images/mg4.jpg",
     description: "Moderno, eficiente y divertido. El hatchback que redefine la movilidad.",
-    pdf: "/documents/FICHA-MG4.pdf", // PDF añadido aquí
+    pdf: "/documents/FICHA-MG4.pdf",
   },
 ];
 
@@ -66,9 +77,17 @@ const ModelsSection: React.FC = () => {
                 <p className="mt-2 text-gray-700">{model.description}</p>
               </CardContent>
               <CardFooter className="flex flex-col gap-3">
-                <Button variant="outline" className="w-full">
-                  <Eye className="mr-2 h-4 w-4" /> Ver Galería
-                </Button>
+                {model.galleryImages && model.galleryImages.length > 0 ? (
+                  <ModelGallery
+                    modelName={model.name}
+                    images={model.galleryImages}
+                  />
+                ) : (
+                  // Botón de galería por defecto si no hay imágenes definidas
+                  <Button variant="outline" className="w-full" disabled>
+                    Ver Galería (Próximamente)
+                  </Button>
+                )}
                 <div className="flex gap-3">
                   <Button asChild className="flex-1 bg-red-600 hover:bg-red-700 text-white">
                     <ScrollLink to="#lead-form" className="w-full text-center">
