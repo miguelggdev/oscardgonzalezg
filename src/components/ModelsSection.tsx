@@ -37,7 +37,7 @@ const featuredModels: Model[] = [
     name: "MG4 Cross",
     image: "/images/mg4.jpg",
     description: "Moderno, eficiente y divertido. El hatchback que redefine la movilidad.",
-    // No hay PDF disponible para este modelo
+    pdf: "/documents/FICHA-MG4.pdf", // PDF añadido aquí
   },
 ];
 
