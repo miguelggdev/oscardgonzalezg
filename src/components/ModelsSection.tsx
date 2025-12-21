@@ -24,7 +24,7 @@ const featuredModels: Model[] = [
     image: "/images/mgzs.jpg",
     description: "El SUV familiar por excelencia. Espacio, confort y tecnología para todos.",
     label: "Últimas Unidades",
-    pdf: "/documents/FICHA-CYBESTER.pdf",
+    pdf: "/documents/FICHA-ZS.pdf",
   },
   {
     name: "Marvel R",
